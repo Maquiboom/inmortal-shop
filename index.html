@@ -3,114 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tienda INMORTAL - Demo</title>
+<title>Tienda - INMORTAL Network</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-background:linear-gradient(135deg,#1a0000,#8b0000,#ff0000);
-font-family:Arial;
-color:white;
-text-align:center;
-padding:30px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
 }
 
-.card{
-background:rgba(0,0,0,0.7);
-padding:20px;
-margin:20px auto;
-width:300px;
-border-radius:10px;
-border:2px solid red;
+body {
+    background: #1a0000;
+    color: white;
+    overflow-x: hidden;
 }
 
-button{
-background:red;
-border:none;
-padding:10px;
-color:white;
-cursor:pointer;
-margin-top:10px;
+/* Fondo animado */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 20%, #ff4d4d33, transparent 40%),
+                radial-gradient(circle at 80% 80%, #ff1a1a33, transparent 40%);
+    animation: moveBackground 15s infinite alternate;
+    z-index: -1;
 }
 
-button:hover{
-background:#ff1a1a;
+@keyframes moveBackground {
+    from { transform: translate(0,0); }
+    to { transform: translate(-200px, -200px); }
 }
 
-input{
-padding:8px;
-margin-top:10px;
-width:80%;
+/* NAV */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: #330000dd;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    backdrop-filter: blur(10px);
 }
 
-#mensaje{
-margin-top:20px;
-font-weight:bold;
+nav a {
+    color: #ff4d4d;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* HEADER */
+header {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #330000cc, #1a0000);
+    text-align: center;
+    margin-top: 60px;
+}
+
+header h1 {
+    font-size: 60px;
+    color: #ff3333;
+    text-shadow: 0 0 20px #ff3333;
+}
+
+/* SECCIONES */
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 40px;
+    margin-bottom: 50px;
+    color: #ff4d4d;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.card {
+    background: #330000;
+    padding: 30px;
+    width: 280px;
+    border-radius: 15px;
+    transition: 0.4s;
+    border: 1px solid #ff333333;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px #ff3333;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #ff6666;
+}
+
+.price {
+    font-size: 22px;
+    margin: 15px 0;
+    color: #ff3333;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #ff3333, #990000);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff3333;
+}
+
+footer {
+    background: #1a0000;
+    padding: 20px;
+    text-align: center;
+    color: #ff9999;
 }
 </style>
 </head>
+
 <body>
 
-<h1>🔥 TIENDA INMORTAL (Demo Ficticia) 🔥</h1>
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="#rangos">Rangos</a>
+    <a href="#llaves">Llaves</a>
+    <a href="#monedas">Monedas</a>
+</nav>
 
-<div class="card">
-<h2>Rango Inmortal</h2>
-<p>Precio: $15</p>
-<input type="text" id="nick" placeholder="Nick de Minecraft">
-<button onclick="comprar('Inmortal',15)">Comprar</button>
-</div>
+<header>
+    <h1>TIENDA OFICIAL</h1>
+</header>
 
-<div class="card">
-<h2>Rango Legendario</h2>
-<p>Precio: $25</p>
-<button onclick="comprar('Legendario',25)">Comprar</button>
-</div>
+<!-- RANGOS -->
+<section id="rangos">
+    <h2 class="section-title">Rangos</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>VIP</h3>
+            <p>Kit exclusivo + ventajas especiales.</p>
+            <div class="price">$5 USD</div>
+            <button class="btn">Comprar</button>
+        </div>
 
-<div id="mensaje"></div>
+        <div class="card">
+            <h3>MVP</h3>
+            <p>Mejores kits + más beneficios.</p>
+            <div class="price">$10 USD</div>
+            <button class="btn">Comprar</button>
+        </div>
 
-<script>
-let lastPurchase = 0;
+        <div class="card">
+            <h3>INMORTAL</h3>
+            <p>El rango más poderoso del servidor.</p>
+            <div class="price">$20 USD</div>
+            <button class="btn">Comprar</button>
+        </div>
+    </div>
+</section>
 
-function validarNick(nick){
-return /^[a-zA-Z0-9_]{3,16}$/.test(nick);
-}
+<!-- LLAVES -->
+<section id="llaves">
+    <h2 class="section-title">Llaves</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Llave Épica</h3>
+            <p>Recompensas exclusivas.</p>
+            <div class="price">$2 USD</div>
+            <button class="btn">Comprar</button>
+        </div>
 
-function comprar(rango, precio){
+        <div class="card">
+            <h3>Llave Legendaria</h3>
+            <p>Premios raros y especiales.</p>
+            <div class="price">$4 USD</div>
+            <button class="btn">Comprar</button>
+        </div>
+    </div>
+</section>
 
-let now = Date.now();
+<!-- MONEDAS -->
+<section id="monedas">
+    <h2 class="section-title">Monedas</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>1000 Coins</h3>
+            <div class="price">$3 USD</div>
+            <button class="btn">Comprar</button>
+        </div>
 
-if(now - lastPurchase < 5000){
-mostrarMensaje("⏳ Espera 5 segundos antes de otra compra.", "orange");
-return;
-}
+        <div class="card">
+            <h3>5000 Coins</h3>
+            <div class="price">$10 USD</div>
+            <button class="btn">Comprar</button>
+        </div>
+    </div>
+</section>
 
-let nick = document.getElementById("nick").value.trim();
-
-if(!validarNick(nick)){
-mostrarMensaje("❌ Nick inválido. Usa entre 3 y 16 caracteres.", "yellow");
-return;
-}
-
-lastPurchase = now;
-
-mostrarMensaje("🔄 Procesando compra...", "white");
-
-setTimeout(() => {
-mostrarMensaje(
-"✅ Compra ficticia completada\n\nJugador: " + nick +
-"\nRango: " + rango +
-"\nPrecio: $" + precio +
-"\n\n⚠️ Esta es solo una simulación (no se realizó ningún pago real).",
-"lightgreen"
-);
-}, 2000);
-}
-
-function mostrarMensaje(texto, color){
-let mensaje = document.getElementById("mensaje");
-mensaje.style.color = color;
-mensaje.innerText = texto;
-}
-</script>
+<footer>
+    © 2026 INMORTAL Network - Todos los derechos reservados
+</footer>
 
 </body>
 </html>
