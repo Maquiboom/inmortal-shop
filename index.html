@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda INMORTAL - Demo</title>
+
+<style>
+body{
+background:linear-gradient(135deg,#1a0000,#8b0000,#ff0000);
+font-family:Arial;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+.card{
+background:rgba(0,0,0,0.7);
+padding:20px;
+margin:20px auto;
+width:300px;
+border-radius:10px;
+border:2px solid red;
+}
+
+button{
+background:red;
+border:none;
+padding:10px;
+color:white;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#ff1a1a;
+}
+
+input{
+padding:8px;
+margin-top:10px;
+width:80%;
+}
+
+#mensaje{
+margin-top:20px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<h1>🔥 TIENDA INMORTAL (Demo Ficticia) 🔥</h1>
+
+<div class="card">
+<h2>Rango Inmortal</h2>
+<p>Precio: $15</p>
+<input type="text" id="nick" placeholder="Nick de Minecraft">
+<button onclick="comprar('Inmortal',15)">Comprar</button>
+</div>
+
+<div class="card">
+<h2>Rango Legendario</h2>
+<p>Precio: $25</p>
+<button onclick="comprar('Legendario',25)">Comprar</button>
+</div>
+
+<div id="mensaje"></div>
+
+<script>
+let lastPurchase = 0;
+
+function validarNick(nick){
+return /^[a-zA-Z0-9_]{3,16}$/.test(nick);
+}
+
+function comprar(rango, precio){
+
+let now = Date.now();
+
+if(now - lastPurchase < 5000){
+mostrarMensaje("⏳ Espera 5 segundos antes de otra compra.", "orange");
+return;
+}
+
+let nick = document.getElementById("nick").value.trim();
+
+if(!validarNick(nick)){
+mostrarMensaje("❌ Nick inválido. Usa entre 3 y 16 caracteres.", "yellow");
+return;
+}
+
+lastPurchase = now;
+
+mostrarMensaje("🔄 Procesando compra...", "white");
+
+setTimeout(() => {
+mostrarMensaje(
+"✅ Compra ficticia completada\n\nJugador: " + nick +
+"\nRango: " + rango +
+"\nPrecio: $" + precio +
+"\n\n⚠️ Esta es solo una simulación (no se realizó ningún pago real).",
+"lightgreen"
+);
+}, 2000);
+}
+
+function mostrarMensaje(texto, color){
+let mensaje = document.getElementById("mensaje");
+mensaje.style.color = color;
+mensaje.innerText = texto;
+}
+</script>
+
+</body>
+</html>
