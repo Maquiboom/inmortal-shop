@@ -8,227 +8,288 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Orbitron', sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Orbitron',sans-serif;
 }
 
-body {
-    background: #1a0000;
-    color: white;
-    overflow-x: hidden;
+body{
+    background:#100000;
+    color:white;
+    overflow-x:hidden;
 }
 
 /* Fondo animado */
-body::before {
-    content: "";
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at 20% 20%, #ff4d4d33, transparent 40%),
-                radial-gradient(circle at 80% 80%, #ff1a1a33, transparent 40%);
-    animation: moveBackground 15s infinite alternate;
-    z-index: -1;
+body::before{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:
+    radial-gradient(circle at 20% 20%, #ff000033, transparent 40%),
+    radial-gradient(circle at 80% 80%, #ff333333, transparent 40%);
+    animation:bgMove 20s infinite alternate ease-in-out;
+    z-index:-1;
 }
 
-@keyframes moveBackground {
-    from { transform: translate(0,0); }
-    to { transform: translate(-200px, -200px); }
+@keyframes bgMove{
+    from{transform:translate(0,0);}
+    to{transform:translate(-300px,-200px);}
 }
 
-/* NAV */
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background: #330000dd;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    backdrop-filter: blur(10px);
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#1a0000dd;
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    padding:18px;
+    backdrop-filter:blur(12px);
+    z-index:1000;
 }
 
-nav a {
-    color: #ff4d4d;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+nav a{
+    color:#ff4d4d;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
 }
 
-nav a:hover {
-    color: white;
+nav a:hover{
+    color:white;
+    text-shadow:0 0 10px #ff0000;
 }
 
-/* HEADER */
-header {
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #330000cc, #1a0000);
-    text-align: center;
-    margin-top: 60px;
+header{
+    height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin-top:70px;
+    background:linear-gradient(to bottom,#330000cc,#100000);
+    text-align:center;
 }
 
-header h1 {
-    font-size: 60px;
-    color: #ff3333;
-    text-shadow: 0 0 20px #ff3333;
+header h1{
+    font-size:65px;
+    color:#ff0000;
+    text-shadow:0 0 30px #ff0000;
 }
 
-/* SECCIONES */
-section {
-    padding: 80px 20px;
-    text-align: center;
+section{
+    padding:100px 20px;
+    text-align:center;
 }
 
-.section-title {
-    font-size: 40px;
-    margin-bottom: 50px;
-    color: #ff4d4d;
+.section-title{
+    font-size:40px;
+    margin-bottom:60px;
+    color:#ff4d4d;
 }
 
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
 }
 
-.card {
-    background: #330000;
-    padding: 30px;
-    width: 280px;
-    border-radius: 15px;
-    transition: 0.4s;
-    border: 1px solid #ff333333;
+/* CARD BASE */
+.card{
+    background:#1f0000;
+    padding:25px;
+    width:260px;
+    border-radius:15px;
+    transition:.4s;
+    position:relative;
+    border:2px solid transparent;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px #ff3333;
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 0 30px currentColor;
 }
 
-.card h3 {
-    margin-bottom: 10px;
-    color: #ff6666;
+/* COLORES SEGÚN PODER */
+.low { color:#999; border-color:#444; }
+.mid { color:#00ffcc; border-color:#00ffcc; }
+.high { color:#ffcc00; border-color:#ffcc00; }
+.top { color:#ff3333; border-color:#ff0000; }
+
+/* EFECTO INMORTAL */
+.legendary{
+    background:linear-gradient(45deg,#330000,#660000,#330000);
+    animation:legendGlow 2s infinite alternate;
 }
 
-.price {
-    font-size: 22px;
-    margin: 15px 0;
-    color: #ff3333;
+@keyframes legendGlow{
+    from{ box-shadow:0 0 15px #ff0000;}
+    to{ box-shadow:0 0 45px #ff3333;}
 }
 
-.btn {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(45deg, #ff3333, #990000);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+.price{
+    margin:15px 0;
+    font-size:20px;
 }
 
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px #ff3333;
+.btn{
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    background:linear-gradient(45deg,#ff0000,#990000);
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
 }
 
-footer {
-    background: #1a0000;
-    padding: 20px;
-    text-align: center;
-    color: #ff9999;
+.btn:hover{
+    transform:scale(1.1);
+}
+
+/* CARRITO */
+.cart{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#1a0000;
+    padding:15px 20px;
+    border-radius:10px;
+    box-shadow:0 0 25px #ff000055;
+}
+
+.cart button{
+    margin-top:10px;
+    width:100%;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:#000000cc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    visibility:hidden;
+    opacity:0;
+    transition:.4s;
+}
+
+.modal-content{
+    background:#1a0000;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.modal.active{
+    visibility:visible;
+    opacity:1;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#100000;
+    color:#ff9999;
 }
 </style>
 </head>
-
 <body>
 
 <nav>
-    <a href="index.html">Inicio</a>
-    <a href="#rangos">Rangos</a>
-    <a href="#llaves">Llaves</a>
-    <a href="#monedas">Monedas</a>
+<a href="index.html">Inicio</a>
+<a href="#rangos">Rangos</a>
 </nav>
 
 <header>
-    <h1>TIENDA OFICIAL</h1>
+<h1>TIENDA OFICIAL</h1>
+<p>Desbloquea tu poder en INMORTAL 🔥</p>
 </header>
 
-<!-- RANGOS -->
 <section id="rangos">
-    <h2 class="section-title">Rangos</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>VIP</h3>
-            <p>Kit exclusivo + ventajas especiales.</p>
-            <div class="price">$5 USD</div>
-            <button class="btn">Comprar</button>
-        </div>
-
-        <div class="card">
-            <h3>MVP</h3>
-            <p>Mejores kits + más beneficios.</p>
-            <div class="price">$10 USD</div>
-            <button class="btn">Comprar</button>
-        </div>
-
-        <div class="card">
-            <h3>INMORTAL</h3>
-            <p>El rango más poderoso del servidor.</p>
-            <div class="price">$20 USD</div>
-            <button class="btn">Comprar</button>
-        </div>
-    </div>
+<h2 class="section-title">Rangos</h2>
+<div class="cards" id="rankContainer"></div>
 </section>
 
-<!-- LLAVES -->
-<section id="llaves">
-    <h2 class="section-title">Llaves</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Llave Épica</h3>
-            <p>Recompensas exclusivas.</p>
-            <div class="price">$2 USD</div>
-            <button class="btn">Comprar</button>
-        </div>
+<div class="cart">
+<h4>🛒 Carrito</h4>
+<p id="cartItems">0 productos</p>
+<button class="btn" onclick="checkout()">Finalizar Compra</button>
+</div>
 
-        <div class="card">
-            <h3>Llave Legendaria</h3>
-            <p>Premios raros y especiales.</p>
-            <div class="price">$4 USD</div>
-            <button class="btn">Comprar</button>
-        </div>
-    </div>
-</section>
-
-<!-- MONEDAS -->
-<section id="monedas">
-    <h2 class="section-title">Monedas</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>1000 Coins</h3>
-            <div class="price">$3 USD</div>
-            <button class="btn">Comprar</button>
-        </div>
-
-        <div class="card">
-            <h3>5000 Coins</h3>
-            <div class="price">$10 USD</div>
-            <button class="btn">Comprar</button>
-        </div>
-    </div>
-</section>
+<div class="modal" id="modal">
+<div class="modal-content">
+<h2>Compra simulada ✅</h2>
+<p>Gracias por apoyar el servidor.</p>
+<button class="btn" onclick="closeModal()">Cerrar</button>
+</div>
+</div>
 
 <footer>
-    © 2026 INMORTAL Network - Todos los derechos reservados
+© 2026 INMORTAL Network
 </footer>
+
+<script>
+const ranks = [
+"Plagado",
+"Portador",
+"Persistente",
+"Zenit",
+"Alfa",
+"VITAL",
+"Magno",
+"Supremo",
+"Eterno",
+"Inmortal"
+];
+
+let cartCount = 0;
+const container = document.getElementById("rankContainer");
+
+ranks.forEach((rank,index)=>{
+    let tierClass = "low";
+    if(index >= 3 && index < 6) tierClass = "mid";
+    if(index >= 6 && index < 9) tierClass = "high";
+    if(index === 9) tierClass = "top legendary";
+
+    const price = (index+1)*4;
+
+    container.innerHTML += `
+    <div class="card ${tierClass}">
+        <h3>${rank}</h3>
+        <p>Beneficios exclusivos y poder creciente.</p>
+        <div class="price">$${price} USD</div>
+        <button class="btn" onclick="addToCart()">Comprar</button>
+    </div>
+    `;
+});
+
+function addToCart(){
+    cartCount++;
+    document.getElementById("cartItems").innerText = cartCount + " productos";
+}
+
+function checkout(){
+    if(cartCount === 0){
+        alert("Tu carrito está vacío.");
+        return;
+    }
+    document.getElementById("modal").classList.add("active");
+}
+
+function closeModal(){
+    document.getElementById("modal").classList.remove("active");
+    cartCount = 0;
+    document.getElementById("cartItems").innerText = "0 productos";
+}
+</script>
 
 </body>
 </html>
